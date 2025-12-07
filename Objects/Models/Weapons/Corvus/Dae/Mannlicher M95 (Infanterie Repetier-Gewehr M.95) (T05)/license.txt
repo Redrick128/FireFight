@@ -1,0 +1,11 @@
+Model Information:
+* title:	8mm Mannlicher Enbloc Clip
+* source:	https://sketchfab.com/3d-models/8mm-mannlicher-enbloc-clip-7f9e032516e44b3180d0e4568ef884c3
+* author:	Vasikle (https://sketchfab.com/someobne)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "8mm Mannlicher Enbloc Clip" (https://sketchfab.com/3d-models/8mm-mannlicher-enbloc-clip-7f9e032516e44b3180d0e4568ef884c3) by Vasikle (https://sketchfab.com/someobne) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

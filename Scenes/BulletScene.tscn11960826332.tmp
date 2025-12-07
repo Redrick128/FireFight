@@ -1,0 +1,78 @@
+[gd_scene load_steps=9 format=4 uid="uid://qgrnt48okjh7"]
+
+[ext_resource type="Script" uid="uid://c6l5jlyqcct3u" path="res://Scripts/BulletScript.gd" id="1_jtqic"]
+[ext_resource type="Texture2D" uid="uid://b1yynh8joatoo" path="res://Objects/Models/Weapons/Corvus/Dae/Mannlicher M95 (Infanterie Repetier-Gewehr M.95) (T05)/textures/8_50_mm_enbloc_baseColor.png" id="2_jg8xm"]
+[ext_resource type="Texture2D" uid="uid://c7st7deslkio6" path="res://Objects/Models/Weapons/Corvus/Dae/Mannlicher M95 (Infanterie Repetier-Gewehr M.95) (T05)/textures/8_50_mm_enbloc_metallicRoughness.png" id="3_lvmwi"]
+[ext_resource type="Texture2D" uid="uid://b38ytf4k51fc8" path="res://Objects/Models/Weapons/Corvus/Dae/Mannlicher M95 (Infanterie Repetier-Gewehr M.95) (T05)/textures/8_50_mm_enbloc_emissive.png" id="4_4uwo5"]
+[ext_resource type="Texture2D" uid="uid://c1b6qgolmikm4" path="res://Objects/Models/Weapons/Corvus/Dae/Mannlicher M95 (Infanterie Repetier-Gewehr M.95) (T05)/textures/8_50_mm_enbloc_normal.png" id="5_lqyvn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dtd5v"]
+resource_name = "8_50_mm_enbloc"
+cull_mode = 2
+albedo_texture = ExtResource("2_jg8xm")
+metallic = 1.0
+metallic_texture = ExtResource("3_lvmwi")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("3_lvmwi")
+roughness_texture_channel = 1
+emission_enabled = true
+emission_texture = ExtResource("4_4uwo5")
+normal_enabled = true
+normal_texture = ExtResource("5_lqyvn")
+ao_enabled = true
+ao_texture = ExtResource("3_lvmwi")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_3r2qu"]
+_surfaces = [{
+"aabb": AABB(-13.296039, -13.841308, -42.20781, 29.14567, 29.149982, 85.335144),
+"format": 34359742465,
+"index_count": 234,
+"index_data": PackedByteArray("GgABABsAHAAaABsAHQABABoAHgAdABoAHgAaABwAHwAdAB4AHAAbACAAHwATAB0AEwABAB0AIQAfAB4AIgAeABwAIQAeACIAIgAcACMAIwAcACAAFgAhACIABQAiACMAFgAiAAUACQAWAAUACAAWAAkACQAFAAcACAAVABYAFQAhABYABgAVAAgABwAFABcABQAjABcABwAXAAQAFQAkACEAJAAfACEABgAlABUAJQAkABUAAwAlAAYAJAAmAB8AJgATAB8AJQAnACQAJwAmACQAAwAUACUAFAAnACUAAgAUAAMAJgAoABMAKAABABMAJwApACYAKQAoACYAFAAqACcAKgApACcAAgAZABQAGQAqABQAAAAZAAIAKwABACgAKQArACgAAAAYABkABAAYAAAABAAXABgAGAAsABkAGQAsACoAFwAtABgAGAAtACwAFwAjAC0AIwAgAC0AKgAuACkALAAuACoALgArACkALQAvACwALAAvAC4ALQAgAC8ALgAwACsALwAwAC4AMAABACsAIAASAC8ALwASADAAEgABADAAIAAbABIAGwABABIACgALAAwADAANAAoADQAOAAoADQAPAA4ADQAQAA8AEAARAA8A"),
+"lods": [13.7489805, PackedByteArray("EgABABMAEwABABIAFAASABMABQATABIAFAATABUAFQATABYAFgATAAUACAAVABYABgAVAAgABgAUABUACAAWAAkACQAWAAUAAwAUAAYACQAFAAcAAgAUAAMABwAFABcABQASABcABwAXAAQABAAXABgAFwASABgABAAYAAAAAgAZABQAGQASABQAAAAZAAIAGAASABkAAAAYABkACgALAAwADAANAAoADQAOAAoADQAPAA4ADQAQAA8AEAARAA8A"), 62.915142, PackedByteArray("AAABAAIAAgABAAMABAABAAAAAwABAAUABAAFAAEABgADAAUABwAFAAQABgAFAAgACQAFAAcACAAFAAkACgALAAwADAANAAoADQAOAAoADQAPAA4ADQAQAA8AEAARAA8A")],
+"name": "8_50_mm_enbloc",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 49,
+"vertex_data": PackedByteArray("EhD5wCbpHEGUkijCOjk0vrTSOz9kgixClac4wbvSOz/M1CjCDhD5wNJuBcGUkijCufOkP/sKWUG48ifC/xoWQSfpHEEg8nBBmfOkP6WQQcG48ifC78QlQSfpHEHcUifC78QlQdFuBcHcUifCf+RhQa7SOz+kECfCrXEQwYUoGcHA5CXCk7xUwbzSOz/4LybCsXEQwdmiMEHA5CXCGW6jP1XwdEEsLyXC+W2jP/91XcEsLyXCM005QYQoGcGYeSTCM005QdqiMEGYeSTCF5h9Qa3SOz9gLiTCQnyHwLbSOz/cqyVCnA18QLLSOz/cOyZC+TEMwdJuBcFA82tB/xoWQdFuBcEg8nBBizpSQazSOz8A+3FBY5CePvsKWUGwcm5B/TEMwSbpHEFA82tBiVFIwbnSOz9g6mpBOlcXvtVAmkDc8yVCJGBCwGjmZ0DwwCVCdDidvW3QAEFscRVCTHUvQGrmZ0DIJiZCnhajQBkMvUCUzBVCxqjnQK/SOz9Y8hVCXgCowBgMvUBEFhVC1xs8QazSOz9oB9dBv4MFQWWPD0Eoj9ZBjEPbPYopRkHYbNVBv4MFQSIq8MAoj9ZB44+ePqWQQcGwcm5BnhajQGsXjsCUzBVCjEHbPTavLsHYbNVBTHUvQA79CcDIJiZCdDidvSys0sBscRVCtRYCwSIq8MCIStRBOlcXvk6YVsDc8yVCy644wbjSOz9I0tNBtxYCwWSPD0GIStRBWgCowGsXjsBEFhVChpLswLfSOz+A8BRCJGBCwA79CcDwwCVC")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_pk2dd"]
+resource_name = "Bullet_unpacked_8_50mm4_LP_8_50_mm_enbloc_0"
+_surfaces = [{
+"aabb": AABB(-13.296039, -13.841308, -42.20781, 29.14567, 29.149982, 85.335144),
+"attribute_data": PackedByteArray("Ms7UOhJXQT92EhQ+J25PPz1NSDtbTzw/xLgzOtNNRj/fb8s9oelLP3ul0Dk9NUs/RtpZOuQNUD8diAA7W9lUP3oicTsQnFk/M4G+O7teXj9xDQU8ISBjP7O2vz2Af28/nAnoPYB/bz+ARgI+Fe9rP4BGAj635GY/TzOjPRXvaz9PM6M9t+RmP5oJ6D1LVGM/s7a/PUtUYz9mkhs+iBFSP5aFCj5gck8/sGUaPiHvTD9Xqt09pR1bP2AL7T0itF8/I8PLPXk8Uz95d8k9dZZPP1US0j0mCkg/QEDePU7DQz/LrPA92M0+P/9pDj4PaE0/3WYTPi/QTD9+HRA+GYdKP1QOHD4WsEk/uL4IPjr2Sz8B4AI+xpNGP1ApET6aI0M/KSj1PXqrST8tswQ++qdNP8VZ7D28nkw/ZorpPdOBTz+vZdI9KQVXP8oh7D0mZVI/pWADPjd0Tz8XfQs+WFpOP56ZBD4LRFE/j2f0PShbVT+DzAE+zH9YP95dDj4yClw/eI0IPlgDUz8keQs+7ItQPxrkDz5ClFQ/VA4cPuW2VT8Iaw4++4NRPx+ZEz6xKFI/"),
+"format": 34359742487,
+"index_count": 234,
+"index_data": PackedByteArray("HQABAB4AHgABABUAHwAeABUAHwAVACAAIQAdAB4AIQAeAB8AIgAfACAAIgAgACMAJAAhAB8AJAAfACIAJQAdACEAJgAhACQAJgAlACEAGwAiACMAGwAjABwAAAAbABwAAAAcAAIAAwAbAAAAGgAiABsAAwAaABsAGgAkACIABQAaAAMABAAkABoABQAEABoABAAmACQABgAEAAUABgAZAAQAGQAmAAQABwAZAAYAGQAnACYAJwAlACYABwAYABkAGAAnABkACAAYAAcACAAoABgACQAoAAgAGAApACcAKAApABgAJwAqACUAKQAqACcAKgArACUAJQArAB0AKwABAB0AKgAUACsAFAABACsAKQAsACoALAAUACoAKAAtACkALQAsACkACQAWACgAFgAtACgACgAWAAkACgAXABYAFwAuABYAFgAuAC0AFwAvAC4ALQAwACwALgAwAC0ALAAxABQAMAAxACwAMQABABQALwAyAC4ALgAyADAALwAzADIAMAA0ADEANAABADEAMgA0ADAANQABADQAMgA1ADQAMwA1ADIAEwABADUAMwATADUACwAMAA0ADQAOAAsADgAPAAsADgAQAA8ADgARABAAEQASABAA"),
+"lods": [13.7489805, PackedByteArray("EwABABQAFAABABUAFgATABQAFwATABYACgAXABYACgAWAAkACQAWAAgACAAWABgAFgAUABgACAAYAAcABwAYABkAGAAUABkABwAZAAYAGQAUAAQABgAZAAQABAAUABUABgAEAAUABQAEABoABAAVABoABQAaAAMAGgAVABsAAwAaABsAGwAVABwAAwAbAAAAAAAbABwAAAAcAAIACwAMAA0ADQAOAAsADgAPAAsADgAQAA8ADgARABAAEQASABAA"), 62.915142, PackedByteArray("AAABAAIAAwABAAAAAwAEAAEABQAEAAMABgAEAAUABwAEAAYACAAEAAcACAAJAAQACQABAAQACgABAAkACwAMAA0ADQAOAAsADgAPAAsADgAQAA8ADgARABAAEQASABAA")],
+"material": SubResource("StandardMaterial3D_dtd5v"),
+"name": "8_50_mm_enbloc",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 54,
+"vertex_data": PackedByteArray("EhD5wCbpHEGUkijCOjk0vrTSOz9kgixClac4wbvSOz/M1CjCufOkP/sKWUG48ifC/xoWQSfpHEEg8nBB78QlQSfpHEHcUifCf+RhQa7SOz+kECfC78QlQdFuBcHcUifCmfOkP6WQQcG48ifCDhD5wNJuBcGUkijClac4wbvSOz/M1CjCrXEQwYUoGcHA5CXCk7xUwbzSOz/4LybCsXEQwdmiMEHA5CXCGW6jP1XwdEEsLyXC+W2jP/91XcEsLyXCM005QYQoGcGYeSTCM005QdqiMEGYeSTCF5h9Qa3SOz9gLiTCQnyHwLbSOz/cqyVCnA18QLLSOz/cOyZCQnyHwLbSOz/cqyVC+TEMwdJuBcFA82tBiVFIwbnSOz9g6mpB/xoWQdFuBcEg8nBBizpSQazSOz8A+3FBY5CePvsKWUGwcm5B/TEMwSbpHEFA82tBiVFIwbnSOz9g6mpBOlcXvtVAmkDc8yVCJGBCwGjmZ0DwwCVCXgCowBgMvUBEFhVChpLswLfSOz+A8BRCdDidvW3QAEFscRVCtxYCwWSPD0GIStRBy644wbjSOz9I0tNBjEPbPYopRkHYbNVBnhajQBkMvUCUzBVCv4MFQWWPD0Eoj9ZB1xs8QazSOz9oB9dB44+ePqWQQcGwcm5Bv4MFQSIq8MAoj9ZBxqjnQK/SOz9Y8hVCTHUvQGrmZ0DIJiZCnhajQGsXjsCUzBVCjEHbPTavLsHYbNVBtRYCwSIq8MCIStRBy644wbjSOz9I0tNBdDidvSys0sBscRVCTHUvQA79CcDIJiZCWgCowGsXjsBEFhVChpLswLfSOz+A8BRCOlcXvk6YVsDc8yVCJGBCwA79CcDwwCVCdD+MwL93JkPVff9/KQApQQYAL4L7fZ1E/3///xp2/z9JvV2913JIPnG/dL+yemA+1P3/f9Z95j9xv4pAw3qVQf9/AABgdf8/dD9yP0h2FzwGANJ9Dn6+OdV9/38PWqUS1X3/fw9apRLVff9/D1qlEtV9/38PWqUS1X3/fw9apRLVff9/D1qlEtV9/38PWqUS1X3/fw9apRLaRPh/gVS0C+64/380OcE/2kQEgN9aAXaaQa1B02+ENQEE+X//gkYwSb2hQkdxpkL/9/9/HnjyQON/3vkEaoBCmkFSvh5vzUoBBAWA+YIeUM9+g7lgQSdSjFxwos9NCWJoUfitnV01Xp4sBIDFifJxNn+x0cFQl06rSAO3JGi6VTEXB4BujJxdk3/15iJc8kg5rdqtAVC6RCi2e7bUYEJBzOX/f31mr0Hmfx0GWGmCPSi2g0mgXbJAAtH/f5NRxECloaqiYDoMRjmtJFKKTv47k38JGblaLzerSPtIm2mlKjEX939DjOwhNn9NLi1RVDGloVRdCTugOWhRBlLqYAMiniz4f5KGdgnPfntGAkKsLYxcjl0JUZEd")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_3r2qu")
+
+[node name="BulletScene" type="Node3D"]
+script = ExtResource("1_jtqic")
+
+[node name="Bullet" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.000386196, 0, 3.3762333e-11, 0, 0.00038619598, 0, -3.376233e-11, 0, -0.0003861961, 0, 0, 0)
+mesh = SubResource("ArrayMesh_pk2dd")
+skeleton = NodePath("")
+metadata/extras = {
+"xplane": {
+"layer": {
+"cockpit_region": [{}, {}, {}, {}],
+"lod": [{}, {}, {}, {}]
+},
+"manip": {}
+}
+}
+
+[node name="RayCast3D" type="RayCast3D" parent="Bullet"]
+transform = Transform3D(-384.48837, -1.2084034e-05, 1.6151484e-12, 0, -6.0420202e-06, -422.662, 3.361304e-05, -138.22523, 1.8475139e-05, 6.2889836e-07, 0, 7.1937585)
+debug_shape_thickness = 3

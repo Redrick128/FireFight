@@ -22,6 +22,7 @@ var gravity = 9.8
 
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
+@onready var t_05: Node3D = $Head/Camera3D/Hand/L_Hand/T05
 
 var p_Is_mouse_visible : bool = false
 
@@ -97,15 +98,43 @@ func _headbob(time) -> Vector3:
 	pos.x = cos(time * BOB_FREQ / 2) * BOB_AMP
 	return pos
 
+var cooldown = false  # script-level variable
+
+func shoot():
+	if cooldown:
+		return  # stop shooting if on cooldown
+
+	cooldown = true  # start cooldown
+
+	# Instantiate bullet
+	var Bullet = BULLET_SCENE.instantiate()
+	Bullet.global_transform = AmmoSpawn.global_transform
+	Bullet.direction = -AmmoSpawn.global_transform.basis.z.normalized()
+	BulletStorage.add_child(Bullet)
+
+	# Play shooting sound
+	var shooting_sound = t_05.get_node("FiringSound")
+	shooting_sound.play()
+	
+	var Timer = 0.0
+	var AnimationPlayerG = t_05.get_node("InBuild/AnimationPlayer")
+	var fired = false
+	# This loop simulates non-blocking passage of time per frame
+	while not fired:
+		var delta = get_process_delta_time()  # time since last frame
+		Timer += delta
+		if Timer >= 0.8:
+			fired = true
+			AnimationPlayerG.play("Fire01")
+		# yield to let the engine run the next frame
+		await get_tree().process_frame
+		
+	# Wait for cooldown duration
+	await get_tree().create_timer(1.9).timeout
+	cooldown = false  # end cooldown
+
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("LMB"):
+		shoot()
 		
-		var Bullet = BULLET_SCENE.instantiate()
-		
-		# Position the bullet at the spawn point
-		# Use global_transform to match world position
-		Bullet.global_transform = AmmoSpawn.global_transform
-		
-		# Add the bullet to your 'Node' in the scene tree
-		BulletStorage.add_child(Bullet)

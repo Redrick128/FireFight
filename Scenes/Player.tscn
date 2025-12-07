@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cn0pnuxq6mbet"]
+[gd_scene load_steps=5 format=3 uid="uid://cn0pnuxq6mbet"]
 
 [ext_resource type="Script" uid="uid://c180swjieftrh" path="res://Scripts/Player.gd" id="1_rpqav"]
 [ext_resource type="PackedScene" uid="uid://tk0khddwk8pw" path="res://Scenes/t_05.tscn" id="2_kyqiw"]
-[ext_resource type="PackedScene" uid="uid://xsu1pvnfdak6" path="res://Objects/Models/Weapons/Corvus/Dae/Mannlicher M95 (Infanterie Repetier-Gewehr M.95) (T05)/InBuild.blend" id="3_gntrk"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_kyqiw"]
 height = 1.85
@@ -12,7 +11,7 @@ points = PackedVector3Array(0.45731953, 0.61070174, 0.06855109, -0.48354548, -0.
 
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("AmmoSpawn")]
 script = ExtResource("1_rpqav")
-AmmoSpawn = NodePath("Head/Camera3D/Hand/AmmoSpawn")
+AmmoSpawn = NodePath("Head/Camera3D/Hand/L_Hand/T05/AmmoSpawn")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_kyqiw")
@@ -30,18 +29,19 @@ current = true
 [node name="Hand" type="Node3D" parent="Head/Camera3D"]
 transform = Transform3D(1.0000002, 0, 0, 0, 0.9999999, 0, 0, 0, 1.0000001, 0.28161186, -0.23840237, -0.6047764)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Head/Camera3D/Hand"]
-transform = Transform3D(0.99999994, -5.3668168e-09, 0, -5.3668163e-09, 1, 0, -1.4551915e-11, 0, 1, -3.2782555e-05, 5.9604645e-06, 0.19088781)
+[node name="R_Hand" type="CSGBox3D" parent="Head/Camera3D/Hand"]
+transform = Transform3D(0.98916733, 0.1467909, -3.4701344e-27, -0.1467909, 0.9891675, 7.6178406e-28, -2.9103827e-11, 7.809744e-20, 1, -0.042224288, 0.04247175, -0.5507514)
 size = Vector3(0.1, 0.1, 0.1)
 
-[node name="T05" parent="Head/Camera3D/Hand" instance=ExtResource("2_kyqiw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.004047096, -0.25656444)
-visible = false
+[node name="L_Hand" type="CSGBox3D" parent="Head/Camera3D/Hand"]
+transform = Transform3D(0.99407715, -0.10867604, 0, 0.10867602, 0.9940772, 0, -1.4551915e-11, 0, 1, -3.2782555e-05, 5.9604645e-06, 0.19088784)
+size = Vector3(0.1, 0.1, 0.1)
 
-[node name="InBuild" parent="Head/Camera3D/Hand" instance=ExtResource("3_gntrk")]
-transform = Transform3D(-4.3711378e-08, 0, -0.9999997, 0, 1, 0, 0.99999976, 0, -4.3711374e-08, -0.02785644, 0.11232574, -0.25656444)
+[node name="T05" parent="Head/Camera3D/Hand/L_Hand" instance=ExtResource("2_kyqiw")]
+transform = Transform3D(0.9999999, 5.366818e-09, 0, 5.366816e-09, 1.0000001, 0, 1.45519135e-11, 7.809748e-20, 0.9999999, -0.027967215, 0.11199404, -0.44788775)
 
-[node name="AmmoSpawn" type="Node3D" parent="Head/Camera3D/Hand"]
-transform = Transform3D(0.99999976, 0, 1.4210851e-14, 0, 1.0000001, 0, -1.4210853e-14, 0, 0.9999999, -0.028352529, 0.10040046, -1.2153635)
+[node name="AmmoSpawn" type="Node3D" parent="Head/Camera3D/Hand/L_Hand/T05"]
+transform = Transform3D(1, 0, 1.4210855e-14, 0, 1, 0, -1.4210855e-14, 0, 1, -0.00035253167, -0.011599541, -0.9583636)
 
-[editable path="Head/Camera3D/Hand/T05"]
+[editable path="Head/Camera3D/Hand/L_Hand/T05"]
+[editable path="Head/Camera3D/Hand/L_Hand/T05/InBuild"]
