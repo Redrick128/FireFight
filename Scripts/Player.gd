@@ -22,7 +22,7 @@ var gravity = 9.8
 
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
-@onready var t_05: Node3D = $Head/Camera3D/Hand/L_Hand/T05
+@export var gun : Node3D
 
 var p_Is_mouse_visible : bool = false
 
@@ -30,6 +30,7 @@ var p_Is_mouse_visible : bool = false
 @export var AmmoSpawn : Node3D
 @export var BulletStorage : Node3D
 const BULLET_SCENE = preload("uid://qgrnt48okjh7")
+@export var AmmoCount : int = 1
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -100,40 +101,53 @@ func _headbob(time) -> Vector3:
 
 var cooldown = false  # script-level variable
 
-func shoot():
-	if cooldown:
+func shoot(): 
+	if cooldown or AmmoCount <= 0:
 		return  # stop shooting if on cooldown
 
 	cooldown = true  # start cooldown
-
-	# Instantiate bullet
-	var Bullet = BULLET_SCENE.instantiate()
-	Bullet.global_transform = AmmoSpawn.global_transform
-	Bullet.direction = -AmmoSpawn.global_transform.basis.z.normalized()
-	BulletStorage.add_child(Bullet)
-
-	# Play shooting sound
-	var shooting_sound = t_05.get_node("FiringSound")
-	shooting_sound.play()
 	
-	var Timer = 0.0
-	var AnimationPlayerG = t_05.get_node("InBuild/AnimationPlayer")
+	if !AmmoCount == 0 or !AmmoCount <= 0:
+		# Instantiate bullet
+		var Bullet = BULLET_SCENE.instantiate()
+		Bullet.global_transform = AmmoSpawn.global_transform
+		Bullet.direction = -AmmoSpawn.global_transform.basis.z.normalized()
+		BulletStorage.add_child(Bullet)
+
+		# Play shooting sound
+		var shooting_sound = gun.get_node("FiringSound")
+		shooting_sound.play()
+		
+		AmmoCount = AmmoCount - 1
+		print(AmmoCount)
+		
+	
+	var GunTimer = 0.0
+	var AnimationPlayerG = gun.get_node("InBuild/AnimationPlayer")
 	var fired = false
 	# This loop simulates non-blocking passage of time per frame
 	while not fired:
 		var delta = get_process_delta_time()  # time since last frame
-		Timer += delta
-		if Timer >= 0.8:
+		GunTimer += delta
+		if GunTimer >= 0.8: 
 			fired = true
 			AnimationPlayerG.play("Fire01")
 		# yield to let the engine run the next frame
 		await get_tree().process_frame
 		
 	# Wait for cooldown duration
-	await get_tree().create_timer(1.9).timeout
+	await get_tree().create_timer(1.2).timeout
 	cooldown = false  # end cooldown
 
+func reload():
+	print("reload") # i will make later.
 
+# Pain incoming
+# DA Health And player punishment system
+## How much blood does the player have in their body. Yes its needed.
+@export var PlayerBloodAmount : float = 5.7 # In liters yes its weird.
+
+@warning_ignore("unused_parameter") # Yeah its annoying
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("LMB"):
 		shoot()

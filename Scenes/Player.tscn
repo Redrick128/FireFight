@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cn0pnuxq6mbet"]
+[gd_scene load_steps=8 format=3 uid="uid://cn0pnuxq6mbet"]
 
 [ext_resource type="Script" uid="uid://c180swjieftrh" path="res://Scripts/Player.gd" id="1_rpqav"]
 [ext_resource type="PackedScene" uid="uid://tk0khddwk8pw" path="res://Scenes/t_05.tscn" id="2_kyqiw"]
@@ -9,8 +9,46 @@ height = 1.85
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_kyqiw"]
 points = PackedVector3Array(0.45731953, 0.61070174, 0.06855109, -0.48354548, -0.5239793, -0.069596216, -0.48371717, -0.5241657, 0.06812784, 0.4275114, -0.66321564, 0.09586843, 0.06812786, 0.5241657, -0.48371717, -0.20732917, 0.5785799, 0.42624772, 0.23125577, -0.54613966, -0.4240968, 0.09612075, -0.49866655, 0.48406318, -0.40207708, 0.6918157, -0.12519914, -0.26067588, -0.5746445, -0.3975547, -0.12745288, -0.90170777, 0.06958326, 0.12598038, 0.9018378, -0.071084246, 0.31307015, 0.5458762, 0.36768767, 0.4223775, 0.4640398, -0.26008427, -0.2880695, -0.5198182, 0.39599198, -0.45193267, 0.4648104, 0.20430356, -0.28748706, 0.5187643, -0.39677492, 0.47990108, -0.46685308, -0.12435522, 0.15225765, -0.83540833, -0.23743165, -0.15398364, 0.8356442, 0.23600648, 0.42114344, -0.48997363, 0.25774074, 0.12488802, -0.8102264, 0.29249546, -0.09736448, -0.49689856, -0.4839315, -0.48228243, 0.44021827, -0.12446503, -0.15385059, 0.83491844, -0.23729289, 0.068299785, 0.5254731, 0.4833344, 0.1805003, 0.80893785, 0.26412296, 0.23464568, 0.7757998, -0.26395413, -0.26529628, -0.8076736, -0.1817089, -0.42286184, -0.46293262, -0.2594656, -0.09764208, -0.49832693, 0.48373294, -0.26393923, -0.77575594, 0.23472726)
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("AmmoSpawn")]
+[sub_resource type="Animation" id="Animation_gntrk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.28161186, -0.23840237, -0.6047764)]
+}
+
+[sub_resource type="Animation" id="Animation_kyqiw"]
+resource_name = "Reload_Pill_T05"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.28161186, -0.23840237, -0.6047764)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dewec"]
+_data = {
+&"RESET": SubResource("Animation_gntrk"),
+&"Reload_Pill_T05": SubResource("Animation_kyqiw")
+}
+
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("gun", "AmmoSpawn")]
 script = ExtResource("1_rpqav")
+gun = NodePath("Head/Camera3D/Hand/L_Hand/T05")
 AmmoSpawn = NodePath("Head/Camera3D/Hand/L_Hand/T05/AmmoSpawn")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -27,21 +65,30 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.07312405)
 current = true
 
 [node name="Hand" type="Node3D" parent="Head/Camera3D"]
-transform = Transform3D(1.0000002, 0, 0, 0, 0.9999999, 0, 0, 0, 1.0000001, 0.28161186, -0.23840237, -0.6047764)
+transform = Transform3D(0.9993426, 0.03625999, 0, -0.03626, 0.99934226, 0, 0, 0, 1.0000001, 0.28161186, -0.23840237, -0.6047764)
 
 [node name="R_Hand" type="CSGBox3D" parent="Head/Camera3D/Hand"]
-transform = Transform3D(0.98916733, 0.1467909, -3.4701344e-27, -0.1467909, 0.9891675, 7.6178406e-28, -2.9103827e-11, 7.809744e-20, 1, -0.042224288, 0.04247175, -0.5507514)
+transform = Transform3D(0.9620942, 0.27271688, -3.343433e-27, -0.2727168, 0.96209425, 1.2015022e-27, -2.9103827e-11, 7.809744e-20, 1, -0.18737996, -0.04354333, -0.49840456)
 size = Vector3(0.1, 0.1, 0.1)
 
 [node name="L_Hand" type="CSGBox3D" parent="Head/Camera3D/Hand"]
-transform = Transform3D(0.99407715, -0.10867604, 0, 0.10867602, 0.9940772, 0, -1.4551915e-11, 0, 1, -3.2782555e-05, 5.9604645e-06, 0.19088784)
+transform = Transform3D(0.9775541, -0.21055532, 0.00747181, 0.2105513, 0.9775818, 0.00117701, -0.007552065, 0.00042253378, 0.9999713, -0.14219823, -0.08126022, 0.07109249)
 size = Vector3(0.1, 0.1, 0.1)
 
 [node name="T05" parent="Head/Camera3D/Hand/L_Hand" instance=ExtResource("2_kyqiw")]
-transform = Transform3D(0.9999999, 5.366818e-09, 0, 5.366816e-09, 1.0000001, 0, 1.45519135e-11, 7.809748e-20, 0.9999999, -0.027967215, 0.11199404, -0.44788775)
+transform = Transform3D(0.9999999, 7.1631803e-09, 0, 3.5986886e-08, 1.0000002, 0, -1.8626451e-09, 2.3283064e-10, 1, -0.0046222955, 0.10306899, -0.447424)
+
+[node name="RayCast3D" parent="Head/Camera3D/Hand/L_Hand/T05" index="4"]
+target_position = Vector3(0, -90, 0)
+collide_with_bodies = false
 
 [node name="AmmoSpawn" type="Node3D" parent="Head/Camera3D/Hand/L_Hand/T05"]
 transform = Transform3D(1, 0, 1.4210855e-14, 0, 1, 0, -1.4210855e-14, 0, 1, -0.00035253167, -0.011599541, -0.9583636)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Head/Camera3D/Hand"]
+libraries = {
+&"": SubResource("AnimationLibrary_dewec")
+}
 
 [editable path="Head/Camera3D/Hand/L_Hand/T05"]
 [editable path="Head/Camera3D/Hand/L_Hand/T05/InBuild"]

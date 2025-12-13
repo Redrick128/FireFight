@@ -8,21 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://b38ytf4k51fc8" path="res://Objects/Models/Weapons/Corvus/Dae/Mannlicher M95 (Infanterie Repetier-Gewehr M.95) (T05)/textures/8_50_mm_enbloc_emissive.png" id="6_vcmfk"]
 [ext_resource type="Texture2D" uid="uid://c1b6qgolmikm4" path="res://Objects/Models/Weapons/Corvus/Dae/Mannlicher M95 (Infanterie Repetier-Gewehr M.95) (T05)/textures/8_50_mm_enbloc_normal.png" id="7_bnj0f"]
 
-[sub_resource type="Animation" id="Animation_s1sxb"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Icosphere_001:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.441159, -0.0030554608, 0.0034151264)]
-}
-
 [sub_resource type="Animation" id="Animation_8blnd"]
 resource_name = "Fire01"
 tracks/0/type = "value"
@@ -36,6 +21,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(0.441159, -0.0030554608, 0.0034151264), Vector3(0.5992251, -0.0030554608, 0.0034151282), Vector3(0.441159, -0.0030554608, 0.0034151264)]
+}
+
+[sub_resource type="Animation" id="Animation_s1sxb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icosphere_001:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.441159, -0.0030554608, 0.0034151264)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vcmfk"]
@@ -141,5 +141,8 @@ metadata/extras = {
 "manip": {}
 }
 }
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -1)
 
 [editable path="InBuild"]
