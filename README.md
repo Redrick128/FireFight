@@ -1,3 +1,6 @@
+# Big Notice
+## some code i got some help for chatgpt but mostly my code chartgot mostly just helps me with my bad code a bit.
+
 # Quick how to install
 ## There will eventually be a folder for compiled versions or an installer for it in the packages.
 ## The zip version you have to manually get from the source code under "Still need to add a folder for builds.
