@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://tk0khddwk8pw"]
+[gd_scene load_steps=15 format=4 uid="uid://tk0khddwk8pw"]
 
 [ext_resource type="AudioStream" uid="uid://cosfk17mvv5c8" path="res://Objects/Sounds/Weapons/T05-Firing-Sound.mp3" id="1_asoc7"]
 [ext_resource type="AudioStream" uid="uid://cgawca6u43sbk" path="res://Objects/Sounds/Weapons/T05_Reload.mp3" id="2_3yuwe"]
@@ -38,10 +38,27 @@ tracks/0/keys = {
 "values": [Vector3(0.441159, -0.0030554608, 0.0034151264)]
 }
 
+[sub_resource type="Animation" id="Animation_vcmfk"]
+resource_name = "Reload01"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icosphere_001:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.43333334, 1.21, 1.6333333, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.441159, -0.0030554608, 0.0034151264), Vector3(0.5992251, -0.0030554608, 0.0034151282), Vector3(0.5992251, -0.0030554608, 0.0034151282), Vector3(0.5992251, -0.0030554608, 0.0034151282), Vector3(0.441159, -0.0030554608, 0.0034151264)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vcmfk"]
 _data = {
 &"Fire01": SubResource("Animation_8blnd"),
-&"RESET": SubResource("Animation_s1sxb")
+&"RESET": SubResource("Animation_s1sxb"),
+&"Reload01": SubResource("Animation_vcmfk")
 }
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dtd5v"]

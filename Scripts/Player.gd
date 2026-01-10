@@ -140,7 +140,21 @@ func shoot():
 	cooldown = false  # end cooldown
 
 func reload():
-	print("reload") # i will make later.
+	if cooldown or AmmoCount > 4:
+		return  # stop shooting if on cooldown
+	
+	cooldown = true  # start cooldown
+	
+	var Sound = gun.get_node("ReloadingSound")
+	var AnimationPlayerG = gun.get_node("InBuild/AnimationPlayer")
+	if AmmoCount < 5:
+		Sound.play()
+		AnimationPlayerG.play("Reload01")
+		AmmoCount = 5
+		# Wait for cooldown duration
+		await get_tree().create_timer(2.0).timeout
+		cooldown = false  # end cooldown
+	
 
 # Pain incoming
 # DA Health And player punishment system
@@ -151,4 +165,5 @@ func reload():
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("LMB"):
 		shoot()
-		
+	if Input.is_action_just_pressed("R"):
+		reload()
