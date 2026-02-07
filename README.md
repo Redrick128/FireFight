@@ -1,5 +1,5 @@
 # Big Notice
-## some code i got some help for chatgpt but mostly my code chatgpt mostly just helps me with my bad code a bit.
+## some code i got some help for chatgpt but mostly i made the code, chatgpt mostly just helps me with my bad code a bit.
 
 # Quick how to install
 ## There will eventually be a folder for compiled versions or an installer for it in the packages.
