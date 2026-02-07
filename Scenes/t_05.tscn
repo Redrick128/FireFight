@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://tk0khddwk8pw"]
+[gd_scene format=4 uid="uid://tk0khddwk8pw"]
 
 [ext_resource type="AudioStream" uid="uid://cosfk17mvv5c8" path="res://Objects/Sounds/Weapons/T05-Firing-Sound.mp3" id="1_asoc7"]
 [ext_resource type="AudioStream" uid="uid://cgawca6u43sbk" path="res://Objects/Sounds/Weapons/T05_Reload.mp3" id="2_3yuwe"]
@@ -111,23 +111,23 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_1p3wk")
 
-[node name="T05" type="Node3D"]
+[node name="T05" type="Node3D" unique_id=398065741]
 
-[node name="FiringSound" type="AudioStreamPlayer3D" parent="."]
+[node name="FiringSound" type="AudioStreamPlayer3D" parent="." unique_id=1406274608]
 transform = Transform3D(-4.371137e-08, 0, -1, 0, 1, 0, 1, 0, -4.371137e-08, 0, 0, 0)
 stream = ExtResource("1_asoc7")
 volume_db = 40.0
 max_db = 4.6
 max_distance = 145.0
 
-[node name="ReloadingSound" type="AudioStreamPlayer3D" parent="."]
+[node name="ReloadingSound" type="AudioStreamPlayer3D" parent="." unique_id=1914017126]
 transform = Transform3D(-1, 0, 8.742274e-08, 0, 1, 0, -8.742274e-08, 0, -1, 0, 0, 0)
 stream = ExtResource("2_3yuwe")
 volume_db = 15.0
 max_db = 4.0
 max_distance = 20.0
 
-[node name="InBuild" parent="." instance=ExtResource("3_3yuwe")]
+[node name="InBuild" parent="." unique_id=1328767309 instance=ExtResource("3_3yuwe")]
 transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 0, 0.010104641, 0)
 
 [node name="Icosphere_001" parent="InBuild" index="6"]
@@ -136,15 +136,13 @@ transform = Transform3D(1.0000001, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-
 [node name="2_001" parent="InBuild/Icosphere_001" index="0"]
 transform = Transform3D(1, -1.8626451e-09, -1.4901161e-08, 0, 1, -2.561137e-09, 2.9802322e-08, 1.071021e-08, 0.99999994, -0.124865025, -0.004292652, -0.013360649)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="InBuild"]
-libraries = {
-&"": SubResource("AnimationLibrary_vcmfk")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="InBuild" unique_id=612676068]
+libraries/ = SubResource("AnimationLibrary_vcmfk")
 
-[node name="ShotTimer" type="Timer" parent="InBuild"]
+[node name="ShotTimer" type="Timer" parent="InBuild" unique_id=933343843]
 wait_time = 0.8
 
-[node name="Bullet" type="MeshInstance3D" parent="."]
+[node name="Bullet" type="MeshInstance3D" parent="." unique_id=205993324]
 transform = Transform3D(0.00038609904, 1.7077248e-11, 8.655334e-06, 1.9163525e-11, -0.000386196, -6.0776675e-11, 8.65532e-06, 6.119088e-11, -0.00038609913, -0.00030856207, -0.00014977902, -0.99161375)
 visible = false
 mesh = SubResource("ArrayMesh_6td2t")
@@ -159,7 +157,7 @@ metadata/extras = {
 }
 }
 
-[node name="RayCast3D" type="RayCast3D" parent="."]
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=1765798519]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -1)
 
 [editable path="InBuild"]

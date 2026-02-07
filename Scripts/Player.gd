@@ -20,6 +20,8 @@ const FOV_CHANGE = 1.5
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = 9.8
 
+@onready var temp_fps_label: Label = $CanvasLayer/TEMP_FPS_LABEL
+
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
 @export var gun : Node3D
@@ -30,7 +32,12 @@ var p_Is_mouse_visible : bool = false
 @export var AmmoSpawn : Node3D
 @export var BulletStorage : Node3D
 const BULLET_SCENE = preload("uid://qgrnt48okjh7")
-@export var AmmoCount : int = 1
+@export var AmmoCount : int = 5
+
+@export var HandSlot : int = 0
+
+# Melee
+@export var MeleeWeapon : Node3D
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -42,8 +49,10 @@ func _unhandled_input(event):
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-40), deg_to_rad(60))
 
 
-
 func _physics_process(delta):
+	var FPS = Engine.get_frames_per_second()
+	temp_fps_label.text = "FPS : " + str(FPS)
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
@@ -56,7 +65,7 @@ func _physics_process(delta):
 	if Input.is_action_pressed("Shift"):
 		speed = SPRINT_SPEED
 		if Input.is_action_just_pressed("S") and speed == SPRINT_SPEED:
-			print("tripped") # wil make next year - Redrick 11/29/2025
+			print("tripped") # wil make next year - Redrick 11/29/2025 # Pagod ko next year naman - Redrick 1/19/2026
 	else:
 		speed = WALK_SPEED
 
@@ -78,12 +87,14 @@ func _physics_process(delta):
 	t_bob += delta * velocity.length() * float(is_on_floor())
 	camera.transform.origin = _headbob(t_bob)
 	
+	
 	## FOV
 	#var velocity_clamped = clamp(velocity.length(), 0.5, SPRINT_SPEED * 2)
 	#var target_fov = BASE_FOV + FOV_CHANGE * velocity_clamped
 	#camera.fov = lerp(camera.fov, target_fov, delta * 8.0)
 	
 	move_and_slide()
+	
 	
 	if Input.is_action_just_pressed("Escape"):
 		get_tree().quit()
@@ -92,6 +103,15 @@ func _physics_process(delta):
 		p_Is_mouse_visible = !p_Is_mouse_visible  # flip the boolean
 		Input.set_mouse_mode(
 			Input.MOUSE_MODE_VISIBLE if p_Is_mouse_visible else Input.MOUSE_MODE_CAPTURED)
+	
+	if HandSlot == 0:
+		gun.visible = true
+		MeleeWeapon.visible = false
+	elif HandSlot == 1:
+		gun.visible = false
+		MeleeWeapon.visible = true
+
+
 
 func _headbob(time) -> Vector3:
 	var pos = Vector3.ZERO
@@ -100,6 +120,7 @@ func _headbob(time) -> Vector3:
 	return pos
 
 var cooldown = false  # script-level variable
+var reload_cooldown = false
 
 func shoot(): 
 	if cooldown or AmmoCount <= 0:
@@ -140,10 +161,10 @@ func shoot():
 	cooldown = false  # end cooldown
 
 func reload():
-	if cooldown or AmmoCount > 4:
+	if reload_cooldown or AmmoCount > 4:
 		return  # stop shooting if on cooldown
 	
-	cooldown = true  # start cooldown
+	reload_cooldown = true  # start cooldown
 	
 	var Sound = gun.get_node("ReloadingSound")
 	var AnimationPlayerG = gun.get_node("InBuild/AnimationPlayer")
@@ -153,7 +174,7 @@ func reload():
 		AmmoCount = 5
 		# Wait for cooldown duration
 		await get_tree().create_timer(2.0).timeout
-		cooldown = false  # end cooldown
+		reload_cooldown = false  # end cooldown
 	
 
 # Pain incoming
@@ -161,9 +182,26 @@ func reload():
 ## How much blood does the player have in their body. Yes its needed.
 @export var PlayerBloodAmount : float = 5.7 # In liters yes its weird.
 
+## BUFFER OF DOOOOM ##
+
+func SwitchWeapon():
+	if HandSlot == 1:
+		HandSlot = 0
+		print(HandSlot)
+	else:
+		HandSlot = 1
+		print(HandSlot)
+
 @warning_ignore("unused_parameter") # Yeah its annoying
 func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("2"):
+		SwitchWeapon()
+	
 	if Input.is_action_just_pressed("LMB"):
-		shoot()
+		if HandSlot == 0:
+			shoot()
+		elif HandSlot == 1:
+			print("meep")
 	if Input.is_action_just_pressed("R"):
-		reload()
+		if HandSlot == 0:
+			reload()

@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://c6btydfye1rqm"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_kyqiw"]
+top_radius = 0.02
+bottom_radius = 0.02
+height = 0.4
+radial_segments = 50
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_gntrk"]
+top_radius = 0.07
+bottom_radius = 0.07
+height = 0.2
+radial_segments = 50
+
+[node name="MeleeThing" type="Node3D" unique_id=1254771734]
+transform = Transform3D(0.9875926, 0.14585514, 0.058199152, -0.15703778, 0.91726625, 0.3660078, 0, -0.37060606, 0.92879015, 0, 0, 0)
+
+[node name="Stick" type="MeshInstance3D" parent="." unique_id=772242258]
+mesh = SubResource("CylinderMesh_kyqiw")
+skeleton = NodePath("../../../..")
+
+[node name="Head" type="MeshInstance3D" parent="." unique_id=362351715]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+mesh = SubResource("CylinderMesh_gntrk")
+skeleton = NodePath("../../../..")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1617583957]
+size = Vector3(0.01, 0.01, 0.01)

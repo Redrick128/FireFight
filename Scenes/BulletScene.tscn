@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://qgrnt48okjh7"]
+[gd_scene format=4 uid="uid://qgrnt48okjh7"]
 
 [ext_resource type="Script" uid="uid://c6l5jlyqcct3u" path="res://Scripts/BulletScript.gd" id="1_jtqic"]
 [ext_resource type="Texture2D" uid="uid://b1yynh8joatoo" path="res://Objects/Models/Weapons/Corvus/Dae/Mannlicher M95 (Infanterie Repetier-Gewehr M.95) (T05)/textures/8_50_mm_enbloc_baseColor.png" id="2_jg8xm"]
@@ -56,10 +56,10 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_3r2qu")
 
-[node name="BulletScene" type="Node3D"]
+[node name="BulletScene" type="Node3D" unique_id=831935712]
 script = ExtResource("1_jtqic")
 
-[node name="Bullet" type="MeshInstance3D" parent="."]
+[node name="Bullet" type="MeshInstance3D" parent="." unique_id=759632230]
 transform = Transform3D(-0.000386196, 0, 3.3762333e-11, 0, 0.00038619598, 0, -3.376233e-11, 0, -0.0003861961, 0, 0, 0)
 mesh = SubResource("ArrayMesh_pk2dd")
 skeleton = NodePath("")
@@ -73,6 +73,6 @@ metadata/extras = {
 }
 }
 
-[node name="RayCast3D" type="RayCast3D" parent="Bullet"]
+[node name="RayCast3D" type="RayCast3D" parent="Bullet" unique_id=1015040354]
 transform = Transform3D(-776.80756, -6.7910674e-05, 2.9684697e-12, 0, -3.395534e-05, -776.8076, 6.791066e-05, -776.80743, 3.395533e-05, 2.6326074e-06, 0, 30.113516)
 target_position = Vector3(0, -0.02, 0)

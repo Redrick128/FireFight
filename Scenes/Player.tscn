@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://cn0pnuxq6mbet"]
+[gd_scene format=3 uid="uid://cn0pnuxq6mbet"]
 
 [ext_resource type="Script" uid="uid://c180swjieftrh" path="res://Scripts/Player.gd" id="1_rpqav"]
 [ext_resource type="PackedScene" uid="uid://tk0khddwk8pw" path="res://Scenes/t_05.tscn" id="2_kyqiw"]
+[ext_resource type="PackedScene" uid="uid://c6btydfye1rqm" path="res://Scenes/MeleeThing.tscn" id="3_gntrk"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_kyqiw"]
 height = 1.85
@@ -9,86 +10,52 @@ height = 1.85
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_kyqiw"]
 points = PackedVector3Array(0.45731953, 0.61070174, 0.06855109, -0.48354548, -0.5239793, -0.069596216, -0.48371717, -0.5241657, 0.06812784, 0.4275114, -0.66321564, 0.09586843, 0.06812786, 0.5241657, -0.48371717, -0.20732917, 0.5785799, 0.42624772, 0.23125577, -0.54613966, -0.4240968, 0.09612075, -0.49866655, 0.48406318, -0.40207708, 0.6918157, -0.12519914, -0.26067588, -0.5746445, -0.3975547, -0.12745288, -0.90170777, 0.06958326, 0.12598038, 0.9018378, -0.071084246, 0.31307015, 0.5458762, 0.36768767, 0.4223775, 0.4640398, -0.26008427, -0.2880695, -0.5198182, 0.39599198, -0.45193267, 0.4648104, 0.20430356, -0.28748706, 0.5187643, -0.39677492, 0.47990108, -0.46685308, -0.12435522, 0.15225765, -0.83540833, -0.23743165, -0.15398364, 0.8356442, 0.23600648, 0.42114344, -0.48997363, 0.25774074, 0.12488802, -0.8102264, 0.29249546, -0.09736448, -0.49689856, -0.4839315, -0.48228243, 0.44021827, -0.12446503, -0.15385059, 0.83491844, -0.23729289, 0.068299785, 0.5254731, 0.4833344, 0.1805003, 0.80893785, 0.26412296, 0.23464568, 0.7757998, -0.26395413, -0.26529628, -0.8076736, -0.1817089, -0.42286184, -0.46293262, -0.2594656, -0.09764208, -0.49832693, 0.48373294, -0.26393923, -0.77575594, 0.23472726)
 
-[sub_resource type="Animation" id="Animation_gntrk"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.28161186, -0.23840237, -0.6047764)]
-}
-
-[sub_resource type="Animation" id="Animation_kyqiw"]
-resource_name = "Reload_Pill_T05"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.28161186, -0.23840237, -0.6047764)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_dewec"]
-_data = {
-&"RESET": SubResource("Animation_gntrk"),
-&"Reload_Pill_T05": SubResource("Animation_kyqiw")
-}
-
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("gun", "AmmoSpawn")]
+[node name="Player" type="CharacterBody3D" unique_id=957666492 node_paths=PackedStringArray("gun", "AmmoSpawn", "MeleeWeapon")]
 script = ExtResource("1_rpqav")
-gun = NodePath("Head/Camera3D/Hand/L_Hand/T05")
-AmmoSpawn = NodePath("Head/Camera3D/Hand/L_Hand/T05/AmmoSpawn")
+gun = NodePath("Head/Camera3D/T05")
+AmmoSpawn = NodePath("Head/Camera3D/T05/AmmoSpawn")
+MeleeWeapon = NodePath("Head/Camera3D/MeleeThing")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1123935769]
 mesh = SubResource("CapsuleMesh_kyqiw")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1084581753]
 shape = SubResource("ConvexPolygonShape3D_kyqiw")
 
-[node name="Head" type="Node3D" parent="."]
+[node name="Head" type="Node3D" parent="." unique_id=278424816]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.36553645, 0)
 
-[node name="Camera3D" type="Camera3D" parent="Head"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.07312405)
+[node name="Camera3D" type="Camera3D" parent="Head" unique_id=2120411159]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.14781177, -0.17913902, -0.3791473)
 current = true
 
-[node name="Hand" type="Node3D" parent="Head/Camera3D"]
-transform = Transform3D(0.9993426, 0.03625999, 0, -0.03626, 0.99934226, 0, 0, 0, 1.0000001, 0.28161186, -0.23840237, -0.6047764)
+[node name="T05" parent="Head/Camera3D" unique_id=1830396268 instance=ExtResource("2_kyqiw")]
+transform = Transform3D(0.9999761, -1.222185e-05, 0.006981251, 3.7252896e-08, 0.9999984, 0.0017453277, -0.006981264, -0.0017452862, 0.999974, 0.17789632, -0.16212678, -0.8275919)
 
-[node name="R_Hand" type="CSGBox3D" parent="Head/Camera3D/Hand"]
-transform = Transform3D(0.9620942, 0.27271688, -3.343433e-27, -0.2727168, 0.96209425, 1.2015022e-27, -2.9103827e-11, 7.809744e-20, 1, -0.18737996, -0.04354333, -0.49840456)
-size = Vector3(0.1, 0.1, 0.1)
-
-[node name="L_Hand" type="CSGBox3D" parent="Head/Camera3D/Hand"]
-transform = Transform3D(0.9775541, -0.21055532, 0.00747181, 0.2105513, 0.9775818, 0.00117701, -0.007552065, 0.00042253378, 0.9999713, -0.14219823, -0.08126022, 0.07109249)
-size = Vector3(0.1, 0.1, 0.1)
-
-[node name="T05" parent="Head/Camera3D/Hand/L_Hand" instance=ExtResource("2_kyqiw")]
-transform = Transform3D(0.9999999, 7.1631803e-09, 0, 3.5986886e-08, 1.0000002, 0, -1.8626451e-09, 2.3283064e-10, 1, -0.0046222955, 0.10306899, -0.447424)
-
-[node name="RayCast3D" parent="Head/Camera3D/Hand/L_Hand/T05" index="4"]
+[node name="RayCast3D" parent="Head/Camera3D/T05" index="4" unique_id=1765798519]
 target_position = Vector3(0, -90, 0)
 collide_with_bodies = false
 
-[node name="AmmoSpawn" type="Node3D" parent="Head/Camera3D/Hand/L_Hand/T05"]
+[node name="AmmoSpawn" type="Node3D" parent="Head/Camera3D/T05" unique_id=1019425826]
 transform = Transform3D(1, 0, 1.4210855e-14, 0, 1, 0, -1.4210855e-14, 0, 1, -0.00035253167, -0.011599541, -0.9583636)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Head/Camera3D/Hand"]
-libraries = {
-&"": SubResource("AnimationLibrary_dewec")
-}
+[node name="Handle" type="CSGBox3D" parent="Head/Camera3D/T05" unique_id=1407541099]
+transform = Transform3D(1.0000001, -3.2987555e-07, 9.313226e-10, -6.7327437e-07, 1.0000017, -3.8417056e-09, -9.778887e-09, -2.7241185e-08, 1, 0.01862, -0.044509947, 0.5327719)
+size = Vector3(0.01, 0.01, 0.01)
 
-[editable path="Head/Camera3D/Hand/L_Hand/T05"]
-[editable path="Head/Camera3D/Hand/L_Hand/T05/InBuild"]
+[node name="MeleeThing" parent="Head/Camera3D" unique_id=1254771734 instance=ExtResource("3_gntrk")]
+transform = Transform3D(0.9875926, 0.14585514, 0.05819916, -0.1570378, 0.91726625, 0.3660078, -3.7252903e-09, -0.37060603, 0.92879015, 0.50124663, -0.40214345, -0.5648583)
+visible = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=248570141]
+
+[node name="TEMP_FPS_LABEL" type="Label" parent="CanvasLayer" unique_id=1291498917]
+offset_right = 181.0
+offset_bottom = 36.0
+text = "FPS : "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[editable path="Head/Camera3D/T05"]
+[editable path="Head/Camera3D/T05/InBuild"]
+[editable path="Head/Camera3D/MeleeThing"]

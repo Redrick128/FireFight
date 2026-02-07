@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://crnbtkoy0aonq"]
+[gd_scene format=3 uid="uid://crnbtkoy0aonq"]
 
 [ext_resource type="PackedScene" uid="uid://cn0pnuxq6mbet" path="res://Scenes/Player.tscn" id="1_b5ayd"]
 
@@ -24,31 +24,30 @@ data = PackedVector3Array(500, 0, 500, -500, 0, 500, 500, 0, -500, -500, 0, 500,
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b5ayd"]
 albedo_color = Color(0.57254905, 1, 0.57254905, 1)
 
-[node name="Node3D" type="Node3D"]
+[node name="Node3D" type="Node3D" unique_id=597969715]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=346081874]
 environment = SubResource("Environment_8k7wh")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1814590060]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
 shadow_enabled = true
 
-[node name="Floor" type="MeshInstance3D" parent="."]
+[node name="Floor" type="MeshInstance3D" parent="." unique_id=1387504089]
 mesh = SubResource("PlaneMesh_0r02p")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Floor"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor" unique_id=1313738689]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D" unique_id=2006724846]
 shape = SubResource("ConcavePolygonShape3D_b5ayd")
 
-[node name="Player" parent="." node_paths=PackedStringArray("BulletStorage") instance=ExtResource("1_b5ayd")]
+[node name="Player" parent="." unique_id=1260847511 node_paths=PackedStringArray("BulletStorage") instance=ExtResource("1_b5ayd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 BulletStorage = NodePath("../BulletStorage")
 
-[node name="BulletStorage" type="Node3D" parent="."]
+[node name="BulletStorage" type="Node3D" parent="." unique_id=1211543393]
 
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=136972889]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -5)
 material_override = SubResource("StandardMaterial3D_b5ayd")
-use_collision = true
 size = Vector3(0.2, 0.2, 0.2)

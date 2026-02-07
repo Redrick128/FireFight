@@ -10,7 +10,7 @@ func _ready() -> void:
 	ray_cast_3d.exclude_parent
 
 
-var speed = 620
+var speed = 620 #Dis in M/s
 var is_hit_obj = false
 var direction: Vector3
 
@@ -21,7 +21,6 @@ func _process(delta):
 	var dist = speed * delta
 	var new_pos = global_position + direction * dist
 
-	# --- Raycast (Godot 4 style) ---
 	var query = PhysicsRayQueryParameters3D.new()
 	query.from = prev_pos
 	query.to = new_pos
